@@ -1,0 +1,42 @@
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais: <small>{{ pais[0].name.common }}</small></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img [src]="pais[0].flags.png" class="img-thumbnail" />
+        </div>
+        <div class="col">
+            <h3>Información</h3>
+            <ul class="list-group-item">
+                <li><strong>Población</strong> {{pais[0].population | number}}</li>
+                <li><strong>Código numérico</strong> {{pais[0].ccn3}}</li>
+                <li><strong>Código aplha3</strong> {{pais[0].cca3}}</li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <h3>Traducciones</h3>
+    <div class="row">
+        <div class="col">
+            <span class="badge bg-primary mr-1" *ngFor="let t of valores; let i = index">
+                <ng-container *ngIf="i < 10">{{t.common}}</ng-container>
+            </span>
+        </div>
+    </div>
+
+    <!-- <pre class="mt-5">
+        {{ pais[0] | json }}
+    </pre> -->
+
+    
+</ng-template>
